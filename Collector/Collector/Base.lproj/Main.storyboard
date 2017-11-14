@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -53,7 +54,36 @@
                     <view key="view" contentMode="scaleToFill" id="dCY-Zr-tw9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-IU-mwY">
+                                <rect key="frame" x="50" y="74" width="275" height="275"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vrG-IU-mwY" secondAttribute="height" multiplier="1:1" id="UtN-oy-VSv"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FoH-S1-cuZ">
+                                <rect key="frame" x="50" y="370" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Yq-oI-8vg">
+                                <rect key="frame" x="172" y="420" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vrG-IU-mwY" firstAttribute="top" secondItem="MtE-Dd-6sJ" secondAttribute="top" constant="10" id="CbC-xs-U5o"/>
+                            <constraint firstItem="vrG-IU-mwY" firstAttribute="leading" secondItem="MtE-Dd-6sJ" secondAttribute="leading" constant="50" id="Heu-hs-gVZ"/>
+                            <constraint firstItem="9Yq-oI-8vg" firstAttribute="top" secondItem="FoH-S1-cuZ" secondAttribute="bottom" constant="20" id="XK7-Jc-uTY"/>
+                            <constraint firstItem="MtE-Dd-6sJ" firstAttribute="trailing" secondItem="FoH-S1-cuZ" secondAttribute="trailing" constant="50" id="axx-uP-dgc"/>
+                            <constraint firstItem="MtE-Dd-6sJ" firstAttribute="trailing" secondItem="vrG-IU-mwY" secondAttribute="trailing" constant="50" id="gIg-oG-ALY"/>
+                            <constraint firstItem="FoH-S1-cuZ" firstAttribute="top" secondItem="vrG-IU-mwY" secondAttribute="bottom" constant="21" id="goJ-TY-LFH"/>
+                            <constraint firstItem="9Yq-oI-8vg" firstAttribute="centerX" secondItem="dCY-Zr-tw9" secondAttribute="centerX" id="hkT-ko-mjn"/>
+                            <constraint firstItem="FoH-S1-cuZ" firstAttribute="leading" secondItem="MtE-Dd-6sJ" secondAttribute="leading" constant="50" id="jyV-mk-tZg"/>
+                            <constraint firstItem="FoH-S1-cuZ" firstAttribute="width" secondItem="vrG-IU-mwY" secondAttribute="width" id="nwm-e3-N5i"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MtE-Dd-6sJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="o3n-mo-bAh">
@@ -65,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yrl-2D-PIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="962" y="180"/>
+            <point key="canvasLocation" x="960.79999999999995" y="179.46026986506749"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fgA-k8-aOE">
