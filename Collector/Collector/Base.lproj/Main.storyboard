@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zpt-9U-KRo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zpt-9U-KRo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -47,15 +47,15 @@
             </objects>
             <point key="canvasLocation" x="100" y="181.25937031484258"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Item View Controller-->
         <scene sceneID="MJY-i7-5F3">
             <objects>
-                <viewController id="3QS-gK-3Ml" sceneMemberID="viewController">
+                <viewController id="3QS-gK-3Ml" customClass="AddItemViewController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dCY-Zr-tw9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-IU-mwY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-IU-mwY">
                                 <rect key="frame" x="50" y="74" width="275" height="275"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vrG-IU-mwY" secondAttribute="height" multiplier="1:1" id="UtN-oy-VSv"/>
@@ -68,19 +68,22 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Yq-oI-8vg">
-                                <rect key="frame" x="172" y="420" width="30" height="30"/>
+                                <rect key="frame" x="329" y="370" width="30" height="30"/>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addTapped:" destination="3QS-gK-3Ml" eventType="touchUpInside" id="9e6-Qb-9u1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9Yq-oI-8vg" firstAttribute="top" secondItem="vrG-IU-mwY" secondAttribute="bottom" constant="21" id="8Qc-kh-DJA"/>
                             <constraint firstItem="vrG-IU-mwY" firstAttribute="top" secondItem="MtE-Dd-6sJ" secondAttribute="top" constant="10" id="CbC-xs-U5o"/>
                             <constraint firstItem="vrG-IU-mwY" firstAttribute="leading" secondItem="MtE-Dd-6sJ" secondAttribute="leading" constant="50" id="Heu-hs-gVZ"/>
-                            <constraint firstItem="9Yq-oI-8vg" firstAttribute="top" secondItem="FoH-S1-cuZ" secondAttribute="bottom" constant="20" id="XK7-Jc-uTY"/>
                             <constraint firstItem="MtE-Dd-6sJ" firstAttribute="trailing" secondItem="FoH-S1-cuZ" secondAttribute="trailing" constant="50" id="axx-uP-dgc"/>
                             <constraint firstItem="MtE-Dd-6sJ" firstAttribute="trailing" secondItem="vrG-IU-mwY" secondAttribute="trailing" constant="50" id="gIg-oG-ALY"/>
                             <constraint firstItem="FoH-S1-cuZ" firstAttribute="top" secondItem="vrG-IU-mwY" secondAttribute="bottom" constant="21" id="goJ-TY-LFH"/>
-                            <constraint firstItem="9Yq-oI-8vg" firstAttribute="centerX" secondItem="dCY-Zr-tw9" secondAttribute="centerX" id="hkT-ko-mjn"/>
+                            <constraint firstItem="9Yq-oI-8vg" firstAttribute="leading" secondItem="FoH-S1-cuZ" secondAttribute="trailing" constant="4" id="jNA-Ku-4nb"/>
                             <constraint firstItem="FoH-S1-cuZ" firstAttribute="leading" secondItem="MtE-Dd-6sJ" secondAttribute="leading" constant="50" id="jyV-mk-tZg"/>
                             <constraint firstItem="FoH-S1-cuZ" firstAttribute="width" secondItem="vrG-IU-mwY" secondAttribute="width" id="nwm-e3-N5i"/>
                         </constraints>
@@ -88,10 +91,22 @@
                     </view>
                     <navigationItem key="navigationItem" id="o3n-mo-bAh">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="camera" id="EmT-wb-GbL"/>
-                            <barButtonItem systemItem="organize" id="zlV-YA-loA"/>
+                            <barButtonItem systemItem="camera" id="EmT-wb-GbL">
+                                <connections>
+                                    <action selector="cameraTapped:" destination="3QS-gK-3Ml" id="PGP-86-h5K"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="organize" id="zlV-YA-loA">
+                                <connections>
+                                    <action selector="photosTapped:" destination="3QS-gK-3Ml" id="zda-I8-4xI"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="itemImageView" destination="vrG-IU-mwY" id="2NQ-2V-bFW"/>
+                        <outlet property="titleTextfield" destination="FoH-S1-cuZ" id="mCE-y1-S3E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yrl-2D-PIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,4 +131,7 @@
             <point key="canvasLocation" x="-689" y="181"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" width="256" height="256"/>
+    </resources>
 </document>
