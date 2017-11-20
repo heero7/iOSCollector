@@ -9,6 +9,8 @@
 import UIKit
 
 class ItemTableViewController: UITableViewController {
+    
+    var collectorItems : [Item] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,15 +18,16 @@ class ItemTableViewController: UITableViewController {
 
    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return collectorItems.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+        let item = collectorItems[indexPath.row]
+        
+        cell.textLabel?.text = item.title
 
         return cell
     }
@@ -36,6 +39,9 @@ class ItemTableViewController: UITableViewController {
         return true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getItemsFromCoreData()
+    }
 
     
     // Override to support editing the table view.
@@ -56,7 +62,12 @@ class ItemTableViewController: UITableViewController {
      */
     func getItemsFromCoreData() {
         if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
-            
+            if let coreData = try? context.fetch(Item.fetchRequest()) as? [Item] {
+                if let coreDataItems = coreData {
+                    collectorItems = coreDataItems
+                    tableView.reloadData()
+                }
+            }
         }
     }
 
