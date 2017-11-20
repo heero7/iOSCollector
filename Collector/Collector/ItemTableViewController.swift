@@ -28,6 +28,11 @@ class ItemTableViewController: UITableViewController {
         let item = collectorItems[indexPath.row]
         
         cell.textLabel?.text = item.title
+        if let imageData = item.image {
+            cell.imageView?.image = UIImage(data: imageData)
+        }
+        
+        //
 
         return cell
     }
@@ -70,5 +75,4 @@ class ItemTableViewController: UITableViewController {
             }
         }
     }
-
 }
